@@ -23,4 +23,4 @@ script:
   - mkdir build
   - cd build
   - cmake -DCMAKE_CXX_COMPILER=$COMPILER .. && make
-  - ./01-basics_test/basics_test
+  - ./01-basics_test/basics_test -s
