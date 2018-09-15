@@ -1,6 +1,6 @@
 #include<iostream>
 //DO NOT WRITE FUNCTION CODE HERE; USE dna.cpp for function implementation
-//Demo
+
 
 /**
 Given two dna strings returns the hamming distance of the strings.
