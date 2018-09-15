@@ -1,3 +1,4 @@
+#include<math.h>
 #include "dna.h"
 
 int get_point_mutations(std::string dna1, std::string dna2)
