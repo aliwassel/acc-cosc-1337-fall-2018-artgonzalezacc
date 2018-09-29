@@ -22,6 +22,7 @@ WRITE THE PARAM AND RETURN COMMENTS BELOW(SEE MY EXAMPLE ABOVE)
 
 */
 //write function prototype
+long sum_of_squares(vector<int>& numbers);
 
 
 
@@ -48,7 +49,7 @@ given a number returns true if prime or false if not prime
 @return: bool if prime False if not
 */
 //write prototype here
-
+bool is_prime(int number);
 
 
 
@@ -72,3 +73,4 @@ Psuedocode:
 	make sure to return vector of ints primes after loop exits
 */
 //write function prototype here
+vector<int> vector_of_primes(int number);
