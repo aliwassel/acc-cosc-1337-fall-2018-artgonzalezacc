@@ -21,3 +21,20 @@ TEST_CASE("Test invoice get total")
 
 	
 }
+
+TEST_CASE("Test invoice operator overloading") 
+{
+	Invoice invoice;
+
+	InvoiceDetail d(10, 10);
+	invoice.add_invoice_detail(d);
+	invoice.add_invoice_detail(InvoiceDetail(5, 5));
+	invoice.add_invoice_detail(InvoiceDetail(100, 2));
+
+	Invoice invoice1;
+	invoice1.add_invoice_detail(InvoiceDetail(100, 2));
+
+	Invoice result = invoice + invoice1;
+
+	REQUIRE(result.get_total() == 525);
+}
