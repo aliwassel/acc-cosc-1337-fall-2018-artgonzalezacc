@@ -23,5 +23,5 @@ Invoice Invoice::operator+=(const Invoice& i2)
 {
 	total += i2.total;
 
-	return total;
+	return Invoice(total);
 }
