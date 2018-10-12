@@ -1,55 +1,26 @@
-#include "invoice.h"
+#include "invoice_progress.h"
+#include "invoice_utility.h"
 #include <iostream>
 #include <vector>
 
 int main()
 {
-	int inv_choice = 1;
+	InvoiceUtility invu(25);
+	invu.add_invoice_detail(InvoiceDetail(100, 1));
 
-	Invoice invoice;
-	int choice = 1;
+	InvoiceProgress invp(250);
+	invp.add_invoice_detail(InvoiceDetail(100, 1));
 
-	while (choice == 1)
-	{
-		InvoiceDetail detail;
-		std::cin >> detail;
-		invoice.add_invoice_detail(detail);
-
-		std::cout << "Enter 1 to enter another: ";
-		std::cin >> choice;
-	}
-
-
-	Invoice invoice1;
-	choice = 1;
-
-	while (choice == 1)
-	{
-		InvoiceDetail detail;
-		std::cin >> detail;
-		invoice1.add_invoice_detail(detail);
-
-		std::cout << "Enter 1 to enter another: ";
-		std::cin >> choice;
-	}
-
-//	Invoice result = invoice + invoice1;
+	std::cout<<invu.get_total()<< std::endl;
 	
+	std::cout << invp.get_total()<< std::endl;
 
-	Invoice invoice3;
-	invoice3.add_invoice_detail(InvoiceDetail(100, 1));
-	std::vector<Invoice> invoices{ invoice, invoice1, invoice3 };
+	Invoice& u = invu;
+	Invoice& p = invp;
+	
+	std::cout << u.get_total()<<std::endl;
+	std::cout << p.get_total()<< std::endl;
 
-	Invoice result;
-	for (auto i : invoices) 
-	{
-		std::cout << i.get_total() << std::endl;
-		result += i;
-	}
-	std::cout << result.get_total() << std::endl;
-
-
-	std::cout <<"total: " << result.get_total();
 
 	return 0;
 }
