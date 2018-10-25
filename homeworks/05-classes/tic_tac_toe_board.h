@@ -4,7 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
-
+#include "peg.h"
 
 class TicTacToeBoard
 {
@@ -13,7 +13,7 @@ public:
 	TicTacToeBoard(int x, int o, int c) : x_win(x), o_win(o), c_win(o) {}
 	const bool game_over();
 	void start_game(const std::string first) { next_player = first; clear_board(); }
-	void mark_board(const int position) { pegs[position - 1] = next_player; set_next_mark(); }
+	void mark_board(const int position) { pegs[position - 1].val = next_player; set_next_mark(); }
 	const std::string get_player();
 	void display_board();
 	TicTacToeBoard operator+=(const TicTacToeBoard& b);
@@ -29,7 +29,7 @@ private:
 	const bool check_diagonal_win();
 	bool check_board_full() const;
 	void clear_board();
-	std::vector<std::string> pegs{ 9, " " };
+	std::vector<Peg> pegs{ 9 };
 	std::string next_player;
 };
 

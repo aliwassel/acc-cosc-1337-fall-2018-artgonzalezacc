@@ -34,8 +34,8 @@ const bool TicTacToeBoard::check_column_win()
 {
 	for (int i = 0; i < 3; ++i)
 	{
-		if (pegs[i] == pegs[i + 3] && pegs[i] == pegs[i + 6] &&
-			pegs[i + 6] != " ")
+		if (pegs[i].val == pegs[i + 3].val && pegs[i].val == pegs[i + 6].val &&
+			pegs[i + 6].val != " ")
 			return true;
 	}
 
@@ -46,8 +46,8 @@ const bool TicTacToeBoard::check_row_win()
 {
 	for (int i = 0; i < 9; i += 3)
 	{
-		if (pegs[i] == pegs[i + 1] && pegs[i] == pegs[i + 2] &&
-			pegs[i + 2] != " ")
+		if (pegs[i].val == pegs[i + 1].val && pegs[i].val == pegs[i + 2].val &&
+			pegs[i + 2].val != " ")
 			return true;
 	}
 
@@ -56,9 +56,9 @@ const bool TicTacToeBoard::check_row_win()
 
 const bool TicTacToeBoard::check_diagonal_win()
 {
-	if (pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[8] != " ")
+	if (pegs[0].val == pegs[4].val && pegs[4].val == pegs[8].val && pegs[8].val != " ")
 		return true;
-	else if (pegs[6] == pegs[4] && pegs[4] == pegs[2] && pegs[6] != " ")
+	else if (pegs[6].val == pegs[4].val && pegs[4].val == pegs[2].val && pegs[6].val != " ")
 		return true;
 
 	return false;
@@ -73,7 +73,7 @@ void TicTacToeBoard::display_board()
 {
 	for (unsigned i = 0; i < pegs.size(); i += 3)
 	{
-		std::cout << pegs[i] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << std::endl;
+		std::cout << pegs[i].val << "|" << pegs[i + 1].val << "|" << pegs[i + 2].val << std::endl;
 	}
 	std::cout << x_win << o_win << c_win << std::endl;
 
@@ -93,7 +93,7 @@ bool TicTacToeBoard::check_board_full() const
 
 	for (auto peg : pegs)
 	{
-		if (peg == " ")
+		if (peg.val == " ")
 		{
 			return false;
 		}
@@ -105,7 +105,7 @@ bool TicTacToeBoard::check_board_full() const
 void TicTacToeBoard::clear_board()
 {
 	for (auto& peg : pegs)
-		peg = " ";
+		peg.val = " ";
 }
 
 std::istream & operator>>(std::istream & in, TicTacToeBoard & board)
@@ -122,7 +122,7 @@ std::ostream & operator<<(std::ostream & out, const TicTacToeBoard & board)
 {
 	for (unsigned i = 0; i < board.pegs.size(); i += 3)
 	{
-		out << board.pegs[i] << "|" << board.pegs[i + 1] << "|" << board.pegs[i + 2] << std::endl;
+		out << board.pegs[i].val << "|" << board.pegs[i + 1].val << "|" << board.pegs[i + 2].val << std::endl;
 	}
 	out << board.x_win << board.o_win << board.c_win << std::endl;
 
