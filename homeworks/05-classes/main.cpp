@@ -6,27 +6,48 @@
 
 int main()
 {
-	TicTacToeBoard board;
+	TicTacToeBoard a, b, c;
 
-	int choice{ 1 };
+	b.start_game("X");
+	std::cin >> b;//enter 1
+	b.mark_board(2);//O
+	b.mark_board(4);//X
+	b.mark_board(5);//O
+	b.mark_board(7);//X
+	b.game_over();
 
-	do 
+	a.start_game("O");
+	a.mark_board(2);
+	a.mark_board(1);
+	a.mark_board(5);
+	a.mark_board(4);
+	a.mark_board(8);
+	a.game_over();
+
+	c.start_game("X");
+	c.mark_board(1);
+	c.mark_board(2);
+	c.mark_board(3);
+	c.mark_board(5);
+	c.mark_board(4);
+	c.mark_board(6);
+	c.mark_board(8);
+	c.mark_board(7);
+	c.mark_board(9);
+	c.game_over();
+
+	std::vector<TicTacToeBoard> boards{ a, b, c };
+	std::cout << a;
+	std::cout << b;
+	std::cout << c;
+
+	TicTacToeBoard t;
+	for (auto b : boards)
 	{
-		board.start_game("X");
+		t += b;
+	}
 
-		while (!board.game_over()) 
-		{
-			int position;
-			std::cout << "Enter position(1-9): ";
-			std::cin >> position;
-			board.mark_board(position);
-			board.display_board();
-		}
-	
-		std::cout << "Enter 1 to play again, any other key to exit";
-		std::cin >> choice;
-
-	} while (choice == 1);
+	std::cout << t;
 
 	return 0;
 }
