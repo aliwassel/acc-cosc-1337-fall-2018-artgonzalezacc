@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "TicTacToeBoard.h"
+#include "tic_tac_toe_board.h"
 
 
 int main()
