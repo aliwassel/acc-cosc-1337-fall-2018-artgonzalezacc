@@ -2,47 +2,32 @@
 
 std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 {
-	TicTacToeBoard result;
-
-	for (auto board : manager.boards) 
-	{
-		out << board;
-		result += board;
-	}
-
-	out << "History total: \n";
-	out << result;
-
 	return out;
 }
 
-void TicTacToeManager::run()
+std::unique_ptr<TicTacToeBoard> TicTacToeManager::get_game(GameType game_type)
 {
-	int choice{ 1 };
+	return std::unique_ptr<TicTacToe3>();
+}
 
-	do
+void TicTacToeManager::save_game(std::unique_ptr<TicTacToeBoard> board)
+{
+}
+
+void TicTacToeManager::update_winner_count(std::string& winner)
+{
+	if (winner == "X")
 	{
-		TicTacToeBoard board;
-		
-		std::string player;
-		std::cout << "Enter first player X or O: ";
-		std::cin >> player;
+		x_win++;
+	}
+	else if (winner == "O")
+	{
+		o_win++;
+	}
+	else
+	{
+		c_win++;
+	}
 
-		board.start_game(player);
 
-		while (!board.game_over())
-		{
-			int position;
-			std::cout << "Enter position(1-9): ";
-			std::cin >> position;
-			board.mark_board(position);
-			board.display_board();
-		}
-
-		boards.push_back(board);
-
-		std::cout << "Enter 1 to play again, any other key to exit";
-		std::cin >> choice;
-
-	} while (choice == 1);
 }
